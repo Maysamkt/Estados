@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Estados</string>
-    <string name="transition_key">Vamos ver o que é isso</string>
-    <string name="transition_nome">Teste</string>
+    <string name="transition_key">Bandeira</string>
+    <string name="transition_nome">Estado: </string>
 </resources>

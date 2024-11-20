@@ -18,15 +18,6 @@
             android:layout_height="wrap_content"
             android:src="@drawable/bandeira_acre" />
 
-        <ProgressBar
-            android:id="@+id/progress"
-            style="@android:style/Widget.ProgressBar.Small"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|center_vertical"
-            android:layout_marginRight="6dp"
-            android:gravity="center|center_vertical"
-            android:visibility="invisible" />
     </FrameLayout>
 
     <TextView
@@ -37,4 +28,5 @@
         android:layout_marginLeft="10dp"
         android:textColor="#000000"
         android:transitionName="@string/transition_nome"/>
+
 </LinearLayout>

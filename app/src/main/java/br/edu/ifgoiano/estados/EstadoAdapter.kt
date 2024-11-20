@@ -17,15 +17,19 @@ class EstadoAdapter (private val context: Context,
                              fun onClickEstado(holder: EstadosViewHolder?, idx: Int)
                          }
 
-    override fun onCreateViewHolder(
-        viewGroup: ViewGroup,
-        viewType: Int
-    ): EstadosViewHolder {
+    class EstadosViewHolder (view: View): RecyclerView.ViewHolder(view){
+        var tNome: TextView = view.findViewById(R.id.tNome)
+        var img: ImageView = view.findViewById(R.id.img)
+    }
+
+
+    override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) :
+            EstadosViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.adapter_estado, viewGroup, false)
         return EstadosViewHolder(view)
     }
 
-    override fun getItemCount(): Int = estados!!.size
+
 
     override fun onBindViewHolder(
         holder: EstadosViewHolder, position: Int
@@ -39,11 +43,7 @@ class EstadoAdapter (private val context: Context,
         }
     }
 
-    class EstadosViewHolder (view: View): RecyclerView.ViewHolder(view){
-        var tNome: TextView = view.findViewById(R.id.tNome)
-        var img: ImageView = view.findViewById(R.id.img
-        )
-    }
+    override fun getItemCount(): Int = estados!!.size
 
 
 

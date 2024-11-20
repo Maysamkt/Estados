@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
@@ -45,30 +44,39 @@ class MainActivity : AppCompatActivity() {
         return object : EstadoAdapter.EstadoOnClickListener {
             @SuppressLint("RestrictedApi")
             override fun onClickEstado(holder: EstadoAdapter.EstadosViewHolder?, idx: Int){
-                val estado = estados?.getOrNull(idx) ?: return
+                val estado = (estados?.getOrNull(idx) ?: return)
                 val context = holder?.itemView?.context?:return
                 val intent = Intent(baseContext, EstadoActivity::class.java)
                 intent.putExtra("imgEstado", estado.img)
+                intent.putExtra("nome", estado.nome)
+                intent.putExtra("capital", estado.capital)
+                intent.putExtra("população", estado.populacao)
+                intent.putExtra("região", estado.regiao)
+
+
 
 
                 val key = getString(R.string.transition_key)
                 val img: ImageView = holder.img
 
 
+
+
                 val opts1 = ActivityOptions.makeSceneTransitionAnimation(
                     getActivity(context),
                     img,
                     key
+
                 )
 
 
 
-
-                val opts2 = ActivityOptions.makeCustomAnimation(
-                    context,
-                    R.anim.shake,
-                    R.anim.abc_slide_in_top
-                )
+//
+//                val opts2 = ActivityOptions.makeCustomAnimation(
+//                    context,
+//                    R.anim.shake,
+//                    R.anim.abc_slide_in_top
+//                )
 
                 startActivity(intent, opts1.toBundle())
             }
@@ -76,23 +84,23 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.menu_estado, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_linear_layout -> {
-                recyclerView.layoutManager = LinearLayoutManager(this)
-                return true
-            }
-            R.id.action_grid_layout -> {
-                recyclerView.layoutManager = GridLayoutManager(this, 2)
-                return true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        menuInflater.inflate(R.menu.menu_estado, menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            R.id.action_linear_layout -> {
+//                recyclerView.layoutManager = LinearLayoutManager(this)
+//                return true
+//            }
+//            R.id.action_grid_layout -> {
+//                recyclerView.layoutManager = GridLayoutManager(this, 2)
+//                return true
+//            }
+//            else -> super.onOptionsItemSelected(item)
+//        }
+//    }
 
 }
